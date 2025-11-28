@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   // =========================================== //
@@ -36,6 +36,10 @@ function App() {
   const handleResetCountOnClick = () => {
     setCount(0);
   }
+
+  useEffect(() => {
+    console.log(`We are inside the useEffect hook. The current value of count is: ${count}`);
+  });
 
   // ======================================= //
   // City and Country Location
@@ -92,7 +96,7 @@ function App() {
           />
         </div>
         <div>
-          You live in { `${location.city}, ${location.country}...` }
+          We live in { `${location.city}, ${location.country}...` }
         </div>
       </form>
     </>
