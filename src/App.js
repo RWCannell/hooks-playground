@@ -24,6 +24,7 @@ function App() {
   // Increase, decrease, or reset count
 
   const [count, setCount] = useState(0);
+  const [colour, setColour] = useState('salmon');
 
   const handleIncreaseCountOnClick = () => {
     setCount(count + 1);
@@ -37,13 +38,24 @@ function App() {
     setCount(0);
   }
 
+  const handleColourChange = () => {
+    // const nextColour = colour === 'blue' ? 'pink' : 'blue';
+    let nextColour = 'blue';
+    if (colour === 'blue') {
+      nextColour = 'pink';
+    } else {
+      nextColour = 'blue';
+    }
+    setColour(nextColour);
+  };
+
   useEffect(() => {
     console.log(`We are inside the useEffect hook. The current value of count is: ${count}`);
 
     return () => {
       console.log(`We are clearing up everything that was setup above. The last count was: ${count}.`);
     };
-  });
+  }, [count]);
 
   // ======================================= //
   // City and Country Location
@@ -80,7 +92,10 @@ function App() {
       <button onClick={handleResetCountOnClick}>
         Reset Count
       </button>
-      <h1>{count}</h1>
+      <button onClick={handleColourChange}>
+        Change Colour
+      </button>
+      <h1 style={{ color: colour }}>{ count }</h1>
 
       <form>
         <div>
