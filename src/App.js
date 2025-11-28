@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
 function App() {
+  // =========================================== //
+  // Active or Inactive button
   const [isActive, setIsActive] = useState(false);
-
-  // This is more concise
-  // const buttonText = isActive ? 'Active' : 'Inactive';
 
   let buttonText = "";
 
@@ -14,23 +13,49 @@ function App() {
     buttonText = 'Inactive';
   }
 
+  // This is a more concise way of writing a simple if-else statement
+  // const buttonText = isActive ? 'Active' : 'Inactive';
+
   const handleIsActiveOnClick = () => {
     setIsActive(!isActive)
   };
 
+  // ======================================= //
+  // Increase, decrease, or reset count
+
   const [count, setCount] = useState(0);
 
   const handleIncreaseCountOnClick = () => {
-    console.log("Current count: " + count);
     setCount(count + 1);
   }
 
   const handleDecreaseCountOnClick = () => {
-    console.log("Current count: " + count);
     setCount(count - 1);
   }
 
-  console.log("Updated count: " + count);
+  const handleResetCountOnClick = () => {
+    setCount(0);
+  }
+
+  // ======================================= //
+  // City and Country Location
+
+  const [location, setLocation] = useState({
+    city: '',
+    country: '',
+  });
+
+  function handleCityChange(event) {
+    setLocation({
+      ...location, city: event.target.value
+    });
+  };
+
+  function handleCountryChange(event) {
+    setLocation({
+      ...location, country: event.target.value
+    });
+  };
 
   return (
     <>
@@ -44,7 +69,32 @@ function App() {
       <button onClick={handleDecreaseCountOnClick}>
         Decrease Count
       </button>
+      <button onClick={handleResetCountOnClick}>
+        Reset Count
+      </button>
       <h1>{count}</h1>
+
+      <form>
+        <div>
+          <input 
+            type='text'
+            placeholder='City'
+            value={location.city}
+            onChange={handleCityChange}
+          />
+        </div>
+        <div>
+          <input 
+            type='text'
+            placeholder='Country'
+            value={location.country}
+            onChange={handleCountryChange}
+          />
+        </div>
+        <div>
+          You live in { `${location.city}, ${location.country}...` }
+        </div>
+      </form>
     </>
   );
 }
