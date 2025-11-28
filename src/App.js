@@ -39,6 +39,10 @@ function App() {
 
   useEffect(() => {
     console.log(`We are inside the useEffect hook. The current value of count is: ${count}`);
+
+    return () => {
+      console.log(`We are clearing up everything that was setup above. The last count was: ${count}.`);
+    };
   });
 
   // ======================================= //
