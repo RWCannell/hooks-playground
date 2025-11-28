@@ -39,10 +39,10 @@ function App() {
   }
 
   const handleColourChange = () => {
-    // const nextColour = colour === 'blue' ? 'pink' : 'blue';
+    // const nextColour = colour === 'blue' ? 'green' : 'blue';
     let nextColour = 'blue';
     if (colour === 'blue') {
-      nextColour = 'pink';
+      nextColour = 'green';
     } else {
       nextColour = 'blue';
     }
@@ -55,7 +55,7 @@ function App() {
     return () => {
       console.log(`We are clearing up everything that was setup above. The last count was: ${count}.`);
     };
-  }, [count]);
+  }, [colour]);
 
   // ======================================= //
   // City and Country Location
